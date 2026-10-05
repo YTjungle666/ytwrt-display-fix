@@ -25,7 +25,7 @@ tar xzf "$V/$LMS_VENDOR"
 mkdir data ctrl
 tar xzf data.tar.gz -C data
 tar xzf control.tar.gz -C ctrl
-cp ctrl/control ctrl/control.vendor
+cp ctrl/control ./control.vendor
 install -m0644 "$F/luci-mod-status/netstat.lua" data/usr/lib/lua/luci/controller/netstat.lua
 touch -r data/usr/lib/lua/luci/controller data/usr/lib/lua/luci/controller/netstat.lua
 sed -i 's/^Version: .*/Version: 27.278.03253~93e12ac-r1.yt1/' ctrl/control
@@ -39,7 +39,7 @@ tar xzf "$V/$AUTO_VENDOR"
 mkdir data ctrl
 tar xzf data.tar.gz -C data
 tar xzf control.tar.gz -C ctrl
-cp ctrl/control ctrl/control.vendor
+cp ctrl/control ./control.vendor
 install -m0755 "$F/autocore/cpuinfo" data/sbin/cpuinfo
 touch -r data/sbin data/sbin/cpuinfo
 sed -i 's/^Version: .*/Version: 1-r1.yt1/' ctrl/control
