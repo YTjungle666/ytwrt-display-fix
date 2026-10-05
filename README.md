@@ -42,5 +42,10 @@ Kwrt（YT-WRT，Proxmox LXC + lxcfs）状态页三处显示问题的修复源码
 
 ## 说明
 
-- 修改文件版权归原项目（LuCI / immortalwrt autocore 等），本仓库仅保存针对 LXC 环境的本地修改。
 - 相关：procd 容器视图修复 https://github.com/YTjungle666/procd-lxcfs-fix
+
+## 许可证
+
+本仓库以 **GPL-3.0** 发布（见 [LICENSE](LICENSE)）——与主要参考源码 [nooblk-98/luci-app-netstat](https://github.com/nooblk-98/luci-app-netstat)（GPL-3.0）一致，`files/luci-*/netstat.lua` 为其修改版。
+
+`files/autocore/cpuinfo` 来自 [immortalwrt](https://github.com/immortalwrt/immortalwrt) 的 autocore（GPL-2.0-only），保留其原始许可声明；各修改文件版权归原项目所有。
