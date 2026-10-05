@@ -23,7 +23,7 @@ Kwrt（Proxmox LXC + lxcfs）状态页与登录横幅显示问题的修复源码
     build/build-ipks.sh                     → 用官方 ipk 重打包成本地版本（-r*.yt1）
     build/rollback.sh                       → 设备上回滚到官方版本
 
-## 部署状态（YT-WRT）
+## 部署状态
 
 - 已安装并 hold：`luci-mod-status 27.278.03253~93e12ac-r1.yt1`、`autocore 1-r1.yt1`、`my-default-settings 2-r30.yt1`（`opkg flag hold`）
 - 本地版本号高于 feed，且已 hold，不会随 opkg 更新；完整升级/重刷会还原官方文件，之后重新安装即可
