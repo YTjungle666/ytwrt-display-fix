@@ -38,7 +38,7 @@ Kwrt（Proxmox LXC + lxcfs）状态页、登录横幅显示问题与 procd 容�
 - PR #11（netstat 温度 + 磁盘，kiddin9/op-packages）：https://github.com/kiddin9/op-packages/pull/11
 - PR #12（autocore 核数，kiddin9/op-packages）：https://github.com/kiddin9/op-packages/pull/12
 - PR #13（my-default-settings 登录横幅，kiddin9/op-packages）：https://github.com/kiddin9/op-packages/pull/13
-- procd 容器视图（openwrt/procd）：分支 `system-info-procfs` 已推送 fork，PR 链接提交后更新
+- procd 容器视图（openwrt/procd）：https://github.com/openwrt/procd/pull/52
 
 op-packages 部分以 `.github/diy/patches/*.patch` 形式提交（Sync 会重克隆所有包目录、只保留 `.github/diy/`，补丁在克隆后按文件名排序自动应用）；procd 为直接对上游源码仓库的 PR（仅 `system.c`）。
 
