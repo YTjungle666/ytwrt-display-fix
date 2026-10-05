@@ -1,6 +1,6 @@
 # ytwrt-display-fix
 
-Kwrt（YT-WRT，Proxmox LXC + lxcfs）状态页与登录横幅显示问题的修复源码与本地包构建脚本。
+Kwrt（Proxmox LXC + lxcfs）状态页与登录横幅显示问题的修复源码与本地包构建脚本。
 
 ## 修复内容
 
