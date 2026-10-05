@@ -33,7 +33,7 @@ Kwrt（YT-WRT，Proxmox LXC + lxcfs）状态页与登录横幅显示问题的修
 
 - PR #11（netstat 温度 + 磁盘）：https://github.com/kiddin9/op-packages/pull/11
 - PR #12（autocore 核数）：https://github.com/kiddin9/op-packages/pull/12
-- my-default-settings 登录横幅：diy 补丁 `patches/my-default-settings-sysinfo.patch`（PR 待提交）
+- my-default-settings 登录横幅：https://github.com/kiddin9/op-packages/pull/13
 
 以 `.github/diy/patches/*.patch` 形式提交（Sync 会重克隆所有包目录、只保留 `.github/diy/`，补丁在克隆后按文件名排序自动应用）。
 
