@@ -18,6 +18,8 @@ Kwrt（Proxmox LXC + lxcfs）状态页、登录横幅显示问题与 procd 容�
     files/luci-mod-status/netstat.lua       → root/usr/lib/lua/luci/controller/netstat.lua
     files/luci-app-netstat/netstat.lua      → files/usr/lib/lua/luci/controller/netstat.lua
                                               （luci-mod-status 内的副本源自此包，一并修正）
+    files/luci-mod-status/10_system.js      → www/luci-static/resources/view/status/include/10_system.js
+                                              （本地定制：移除状态页赞助链接行）
     files/autocore/cpuinfo                  → /sbin/cpuinfo
     files/my-default-settings/30-sysinfo.sh → /etc/profile.d/30-sysinfo.sh
     files/procd/system.c                    → procd 源码修改版（唯一改动文件，供 SDK 构建）
@@ -29,7 +31,7 @@ Kwrt（Proxmox LXC + lxcfs）状态页、登录横幅显示问题与 procd 容�
 
 ## 部署状态
 
-- 已安装并 hold：`luci-mod-status 27.278.03253~93e12ac-r1.yt1`、`autocore 1-r1.yt1`、`my-default-settings 2-r30.yt1`、`procd 2026.03.13~58eb263d-r1.yt1`（`opkg flag hold`）
+- 已安装并 hold：`luci-mod-status 27.280.22511~5849cf3-r1.yt1`、`autocore 1-r1.yt1`、`my-default-settings 2-r33.yt1`、`procd 2026.03.13~58eb263d-r1.yt1`（`opkg flag hold`）
 - 本地版本号高于 feed，且已 hold，不会随 opkg 更新；完整升级/重刷会还原官方文件，之后重新安装即可
 - 设备端备份：`/root/ytwrt-display-fix/backup/`、`/root/ytwrt-banner-fix/backup/`、`/root/procd-lxcfs-fix/`（官方 ipk + 原文件）
 
@@ -58,6 +60,7 @@ op-packages 部分以 `.github/diy/patches/*.patch` 形式提交（Sync 会重�
 ## 说明
 
 - procd 修复原独立仓库（procd-lxcfs-fix）已归档，内容并入本仓库。
+- `files/luci-mod-status/10_system.js` 的赞助链接行移除为本地偏好，非上游修复，不随 PR 提交。
 
 ## 许可证
 
