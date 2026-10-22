@@ -11,7 +11,7 @@ Kwrt（Proxmox LXC + lxcfs）状态页、登录横幅显示问题与 procd 容�
    - busybox `df` 折行导致 `awk: cmd. line:1: Access to negative field` 报错、系统存储行丢失 → `df -h /` 改为 `df -P -h /`；
    - `uptime`/`free` 在容器内显示宿主机的负载/运行时间/内存 → 改为直读 `/proc/loadavg`、`/proc/uptime`、`/proc/meminfo`（裸机行为不变，仅格式统一）；
    - CPU 型号被 `cut -d ' ' -f -4` 截断（`AMD Ryzen AI 9 HX PRO 370 ...` → `AMD Ryzen AI 9`）→ 改为 `cut -f 1-7`。
-5. **procd 的 ubus 系统信息显示宿主值**（`ubus call system info` 的 uptime/load/memory/swap）：`sysinfo(2)` 在容器内恒返回宿主数据，LXCFS 只虚拟化 `/proc`；改为 `system.c` 优先直读 `/proc`（uptime←`/proc/uptime`、load←`/proc/loadavg` 保持 1<<16 缩放、memory←`/proc/meminfo`、swap←meminfo→`/proc/swaps`→sysinfo 回退），无容器探测、裸机行为不变，ubus 字段/单位不变。
+5. **procd 的 ubus 系统信息显示宿主值**（`ubus call system info` 的 uptime/load/memory/swap）：`sysinfo(2)` 在容器内恒返回宿主数据，LXCFS 只虚拟化 `/proc`；改为 `system.c` 优先直读 `/proc`（uptime←`/proc/uptime`、load←`/proc/loadavg` 保持 1<<16 缩放、memory 与 swap←`/proc/meminfo`），读不到的项才保留 `sysinfo(2)` 的预置值，无容器探测、裸机行为不变，ubus 字段/单位不变；load 精度由内核的 1/2048 变为 0.01（`/proc/loadavg` 只有两位小数，仅影响显示）。
 
 ## 目录
 
@@ -31,7 +31,7 @@ Kwrt（Proxmox LXC + lxcfs）状态页、登录横幅显示问题与 procd 容�
 
 ## 部署状态
 
-- 已安装并 hold：`luci-mod-status 27.280.22511~5849cf3-r1.yt1`、`autocore 1-r1.yt1`、`my-default-settings 2-r33.yt1`、`procd 2026.03.13~58eb263d-r1.yt1`（`opkg flag hold`）
+- 已安装并 hold：`luci-mod-status 27.280.22511~5849cf3-r1.yt1`、`autocore 1-r1.yt1`、`my-default-settings 2-r33.yt1`、`procd 2026.03.13~58eb263d-r1.yt2`（`opkg flag hold`）
 - 本地版本号高于 feed，且已 hold，不会随 opkg 更新；完整升级/重刷会还原官方文件，之后重新安装即可
 - 设备端备份：`/root/ytwrt-display-fix/backup/`、`/root/ytwrt-banner-fix/backup/`、`/root/procd-lxcfs-fix/`（官方 ipk + 原文件）
 
